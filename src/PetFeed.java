@@ -1,3 +1,4 @@
+
 public class PetFeed {
 
     private String date;
@@ -10,10 +11,8 @@ public class PetFeed {
     }
 
     public void setDate(String date) {
-        if (date != null && !date.equals("")) {
+        if (date != null && !date.trim().isEmpty()) {
             this.date = date;
-        } else {
-            System.out.println("Қате: күн бос болмауы керек");
         }
     }
 
@@ -22,10 +21,8 @@ public class PetFeed {
     }
 
     public void setPet(String pet) {
-        if (pet != null && !pet.equals("")) {
+        if (pet != null && !pet.trim().isEmpty()) {
             this.pet = pet;
-        } else {
-            System.out.println("Қате: жануардың аты бос болмауы керек");
         }
     }
 
@@ -33,11 +30,9 @@ public class PetFeed {
         return foodGrams;
     }
 
-    public void setFoodGrams(int grams) {
-        if (grams >= 0 && grams <= 2000) {
-            foodGrams = grams;
-        } else {
-            System.out.println("Қате: жем мөлшері 0..2000 аралығында болуы керек");
+    public void setFoodGrams(int foodGrams) {
+        if (foodGrams >= 0 && foodGrams <= 2000) {
+            this.foodGrams = foodGrams;
         }
     }
 
@@ -45,20 +40,23 @@ public class PetFeed {
         return walkMinutes;
     }
 
-    public void setWalkMinutes(int minutes) {
-        if (minutes >= 0 && minutes <= 600) {
-            walkMinutes = minutes;
-        } else {
-            System.out.println("Қате: серуен уақыты 0..600 аралығында болуы керек");
+    public void setWalkMinutes(int walkMinutes) {
+        if (walkMinutes >= 0 && walkMinutes <= 600) {
+            this.walkMinutes = walkMinutes;
         }
     }
 
     public boolean isActive() {
-        return walkMinutes >= 30;
+        return walkMinutes >= 45;
     }
 
     public void printInfo() {
-        System.out.println(date + " | " + pet + " | "
-                + foodGrams + " г | " + walkMinutes + " мин");
+        System.out.println(
+                "Күні: " + date +
+                        " | Жануар: " + pet +
+                        " | Жем: " + foodGrams + " г" +
+                        " | Серуен: " + walkMinutes + " мин" +
+                        " | Белсенді: " + isActive()
+        );
     }
 }
